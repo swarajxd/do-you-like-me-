@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you like me?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+        }
+        #no {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Do you like me?</h1>
+    <div class="buttons">
+        <button id="yes" onclick="showThankYou()">Yes</button>
+        <button id="no" onmouseover="moveButton()">No</button>
+    </div>
+    <script>
+        function showThankYou() {
+            document.getElementById('question').innerText = "Thank you!";
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('no');
+            const bodyRect = document.body.getBoundingClientRect();
+            const btnRect = noButton.getBoundingClientRect();
+            const offsetX = btnRect.left - bodyRect.left;
+            const offsetY = btnRect.top - bodyRect.top;
+
+            let newX, newY;
+
+            // Ensure the new position is within the viewport
+            do {
+                newX = Math.random() * (window.innerWidth - btnRect.width);
+                newY = Math.random() * (window.innerHeight - btnRect.height);
+            } while (Math.abs(newX - offsetX) < btnRect.width && Math.abs(newY - offsetY) < btnRect.height);
+
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+        }
+    </script>
+</body>
+</html>
