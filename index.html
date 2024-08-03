@@ -62,16 +62,49 @@
         <h1 id="question">Do you like me?</h1>
         <div class="buttons" id="buttons">
             <button id="yes" onclick="showThankYou()">Yes</button>
-            <button id="no" onmouseover="moveButton()">No</button>
+            <button id="no" onclick="handleNoClick()">No</button>
         </div>
     </div>
     <script>
+        const sentences = [
+            "Are you sure about this? ",
+            "Do you really mean that? ",
+            "Are you certain this is what you want? ",
+            "Have you thought this through? ",
+            "Are you positive about your choice? ",
+            "Is this the right move? ",
+            "Are you absolutely sure? ",
+            "Have you considered the consequences? ",
+            "Is this what you truly want? ",
+            "Are you ready for this? ",
+            "Do you really think this is a good idea? ",
+            "Are you confident in your decision? ",
+            "Have you weighed all the options? ",
+            "Is this the best choice for you? ",
+            "Do you believe this is the right path? ",
+            "Are you not second-guessing this? ",
+            "Is this really the path you want to take? ",
+            "Have you double-checked your decision? ",
+            "Are you prepared for the outcome? ",
+            "Do you really want to go through with this? ",
+            "Have you considered all the possibilities? ",
+            "Are you not having any doubts? ",
+            "Is this what you want to commit to? ",
+            "Are you ready for what’s ahead? ",
+            "Do you truly feel this is the best choice? ",
+            "Have you considered all potential regrets? ",
+            "Are you making the right call here? ",
+            "Is this the decision you want to stand by? ",
+            "Have you thought about the potential consequences? ",
+            "Are you sure there’s no other option? "
+        ];
+
         function showThankYou() {
             document.getElementById('question').innerText = "Thank you!";
             document.getElementById('buttons').style.display = 'none';
         }
 
-        function moveButton() {
+        function handleNoClick() {
             const noButton = document.getElementById('no');
             const bodyRect = document.body.getBoundingClientRect();
             const btnRect = noButton.getBoundingClientRect();
@@ -88,6 +121,10 @@
 
             noButton.style.left = `${newX}px`;
             noButton.style.top = `${newY}px`;
+
+            // Change the question text to a random sentence with "Do you like me?" at the end
+            const randomSentence = sentences[Math.floor(Math.random() * sentences.length)] + "Do you like me?";
+            document.getElementById('question').innerText = randomSentence;
         }
     </script>
 </body>
