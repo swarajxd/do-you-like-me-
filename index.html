@@ -10,8 +10,22 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            font-family: 'Cursive', sans-serif;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff69b4;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff1493;
+            margin: 0;
         }
         .buttons {
             margin-top: 20px;
@@ -19,24 +33,42 @@
         button {
             padding: 10px 20px;
             margin: 0 10px;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #ff1493;
         }
         #no {
+            background-color: #f08080;
+            color: white;
             position: absolute;
+        }
+        #no:hover {
+            background-color: #cd5c5c;
         }
     </style>
 </head>
 <body>
-    <h1 id="question">Do you like me?</h1>
-    <div class="buttons">
-        <button id="yes" onclick="showThankYou()">Yes</button>
-        <button id="no" onmouseover="moveButton()">No</button>
+    <div class="container">
+        <h1 id="question">Do you like me?</h1>
+        <div class="buttons" id="buttons">
+            <button id="yes" onclick="showThankYou()">Yes</button>
+            <button id="no" onmouseover="moveButton()">No</button>
+        </div>
     </div>
     <script>
         function showThankYou() {
             document.getElementById('question').innerText = "Thank you!";
+            document.getElementById('buttons').style.display = 'none';
         }
 
         function moveButton() {
