@@ -13,6 +13,7 @@
             background-color: #ffe4e1;
             font-family: 'Cursive', sans-serif;
             margin: 0;
+            position: relative;
         }
         .container {
             text-align: center;
@@ -113,10 +114,10 @@
 
             let newX, newY;
 
-            // Ensure the new position is within the viewport
+            // Ensure the new position is within the viewport and is a multiple of 10
             do {
-                newX = Math.random() * (window.innerWidth - btnRect.width);
-                newY = Math.random() * (window.innerHeight - btnRect.height);
+                newX = Math.floor(Math.random() * (window.innerWidth - btnRect.width) / 10) * 10;
+                newY = Math.floor(Math.random() * (window.innerHeight - btnRect.height) / 10) * 10;
             } while (Math.abs(newX - offsetX) < btnRect.width && Math.abs(newY - offsetY) < btnRect.height);
 
             noButton.style.left = `${newX}px`;
